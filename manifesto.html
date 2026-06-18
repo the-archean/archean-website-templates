@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archean</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#f3f1e9;
+    --bone-deep:#e7e3d6;
+    --teal:#2d595a;
+    --teal-soft:#5f8281;
+    --mist:#9aa79f;
+    --ink:#33403c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;width:100%;overflow:hidden}
+  body{
+    background:var(--bone);
+    color:var(--teal);
+    font-family:"Inter",system-ui,sans-serif;
+    min-height:100vh;position:relative;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(ellipse 85% 75% at 50% 44%, rgba(255,255,255,.45) 0%, transparent 55%),
+               radial-gradient(ellipse 90% 85% at 50% 50%, transparent 58%, var(--bone-deep) 100%);
+  }
+  .frame{
+    position:fixed;inset:0;z-index:1;display:flex;flex-direction:column;
+    padding:clamp(2rem,4.5vw,3.4rem);
+  }
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    opacity:0;animation:fade 2.4s ease forwards .6s;
+  }
+  .brand{display:flex;align-items:center;gap:.85rem}
+  .brand img{width:36px;height:auto;display:block}
+  .brand .word{font-weight:300;font-size:.74rem;letter-spacing:.42em;text-indent:.42em;color:var(--teal)}
+  .nav a{
+    font-weight:300;font-size:.64rem;letter-spacing:.34em;text-indent:.34em;
+    text-transform:uppercase;color:var(--teal-soft);text-decoration:none;transition:color .4s ease;
+  }
+  .nav a:hover,.nav a:focus-visible{color:var(--teal)}
+  .nav a:focus-visible{outline:1px solid var(--teal-soft);outline-offset:6px}
+
+  .body{flex:1;display:flex;align-items:center}
+  .statement{
+    font-family:"Cormorant",Georgia,serif;font-weight:300;
+    font-size:clamp(2rem,5.6vw,3.4rem);line-height:1.3;color:var(--ink);
+    max-width:17ch;
+    opacity:0;animation:rise 2.8s cubic-bezier(.2,.7,.2,1) forwards 1.2s;
+  }
+
+  .bottom{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    opacity:0;animation:fade 2.6s ease forwards 2s;
+  }
+  .purpose{font-weight:300;font-size:.62rem;letter-spacing:.5em;text-indent:.5em;text-transform:uppercase;color:var(--teal-soft)}
+  .place{font-weight:300;font-size:.62rem;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:var(--mist)}
+
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes fade{to{opacity:1}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms!important}
+    .top,.statement,.bottom{opacity:1!important;transform:none!important}
+  }
+  @media (max-width:560px){
+    .brand .word{display:none}
+    .bottom{flex-direction:column;align-items:flex-start;gap:.9rem}
+    .statement{max-width:none}
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <header class="top">
+      <div class="brand"><img src="assets/archean-mark.png" alt="Archean"><span class="word">ARCHEAN</span></div>
+      <nav class="nav"><a href="mailto:hello@archean.ai">Contact</a></nav>
+    </header>
+    <main class="body">
+      <p class="statement">We are an AI lab investing in our future.</p>
+    </main>
+    <footer class="bottom">
+      <span class="purpose">Predicting the future</span>
+      <span class="place">San Francisco, CA</span>
+    </footer>
+  </div>
+</body>
+</html>

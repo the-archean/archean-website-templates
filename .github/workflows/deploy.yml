@@ -31,6 +31,9 @@ jobs:
           mkdir -p _site
           cp index.html manifesto.html _site/
           cp -R assets _site/assets
+          # CNAME must ship in the artifact: with workflow-based Pages the
+          # custom domain is cleared on deploy if it isn't present here.
+          cp CNAME _site/
           ls -R _site
 
       - uses: actions/configure-pages@v5

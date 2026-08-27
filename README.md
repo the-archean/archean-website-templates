@@ -6,13 +6,19 @@ same copy. They differ in how the page carries itself.
 
 ## Templates
 
-- **`manifesto.html`** — White-page restraint, modeled on early Anthropic / OpenAI.
-  Logo and wordmark top-left, a single Contact link, one declarative sentence set
-  large, quiet metadata along the bottom edge.
-- **`specimen.html`** — A more ceremonial hybrid. The mark is centered as the hero,
-  the statement sits beneath it, and four corners carry faint metadata.
+- **`index.html`** — *Live homepage.* The ceremonial hybrid ("Specimen"): the mark
+  centered as the hero, the statement beneath it, four corners of faint metadata.
+- **`manifesto.html`** — Alternate concept, kept for reference and reachable by
+  direct URL. White-page restraint, modeled on early Anthropic / OpenAI: logo and
+  wordmark top-left, a single Contact link, one declarative sentence set large,
+  quiet metadata along the bottom edge.
 
-Open `index.html` for a launcher linking to both.
+## Deployment
+
+Pushing to `master` triggers `.github/workflows/deploy.yml`, which validates that
+every local asset reference resolves (`scripts/check-assets.sh`), assembles
+`_site/`, and publishes to GitHub Pages. A missing asset fails the build and the
+previous version stays live.
 
 ## Copy
 

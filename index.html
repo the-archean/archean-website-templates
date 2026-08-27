@@ -3,20 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Archean — Templates</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<title>Archean</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  body{background:#f3f1e9;color:#2d595a;font-family:"Inter",sans-serif;font-weight:300;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;margin:0;gap:1.4rem}
-  h1{font-family:"Cormorant",serif;font-weight:300;font-size:2rem;letter-spacing:.04em;margin:0}
-  a{color:#5f8281;text-decoration:none;letter-spacing:.3em;text-transform:uppercase;font-size:.7rem;
-    border:1px solid #cdbfae;padding:.7rem 1.4rem;border-radius:4px;transition:all .3s ease}
-  a:hover{color:#2d595a;border-color:#5f8281}
+  :root{
+    --bone:#f3f1e9;
+    --bone-deep:#e7e3d6;
+    --teal:#2d595a;
+    --teal-soft:#5f8281;
+    --mist:#9aa79f;
+    --ink:#33403c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;width:100%;overflow:hidden}
+  body{
+    background:var(--bone);
+    color:var(--teal);
+    font-family:"Inter",system-ui,sans-serif;
+    min-height:100vh;position:relative;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(ellipse 70% 60% at 50% 46%, rgba(255,255,255,.5) 0%, transparent 58%),
+               radial-gradient(ellipse 88% 82% at 50% 50%, transparent 56%, var(--bone-deep) 100%);
+  }
+  .corner{
+    position:fixed;z-index:2;font-weight:300;font-size:.6rem;
+    letter-spacing:.4em;text-indent:.4em;text-transform:uppercase;color:var(--mist);
+    opacity:0;animation:fade 2.4s ease forwards 1.8s;
+  }
+  .c-tl{top:clamp(2rem,4vw,3rem);left:clamp(2rem,4vw,3.2rem)}
+  .c-tr{top:clamp(2rem,4vw,3rem);right:clamp(2rem,4vw,3.2rem)}
+  .c-bl{bottom:clamp(2rem,4vw,3rem);left:clamp(2rem,4vw,3.2rem)}
+  .c-br{bottom:clamp(2rem,4vw,3rem);right:clamp(2rem,4vw,3.2rem)}
+  .c-tr a{color:var(--teal-soft);text-decoration:none;transition:color .4s ease}
+  .c-tr a:hover,.c-tr a:focus-visible{color:var(--teal)}
+  .c-tr a:focus-visible{outline:1px solid var(--teal-soft);outline-offset:6px}
+
+  .stage{
+    position:relative;z-index:1;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:clamp(3rem,8vw,6rem) 2rem;
+  }
+  .mark{
+    width:clamp(72px,9vw,104px);height:auto;margin-bottom:clamp(1.8rem,3.4vw,2.6rem);
+    opacity:0;transform:translateY(14px) scale(.97);
+    animation:rise 2.6s cubic-bezier(.2,.7,.2,1) forwards .8s;
+  }
+  .name{
+    font-weight:300;font-size:clamp(1.1rem,2.4vw,1.4rem);
+    letter-spacing:.6em;text-indent:.6em;color:var(--teal);
+    margin-bottom:clamp(1.8rem,3.4vw,2.6rem);
+    opacity:0;animation:rise 2.6s cubic-bezier(.2,.7,.2,1) forwards 1.2s;
+  }
+  .statement{
+    font-family:"Cormorant",Georgia,serif;font-weight:300;
+    font-size:clamp(1.5rem,3.6vw,2.2rem);line-height:1.4;color:var(--ink);
+    max-width:20ch;
+    opacity:0;animation:rise 2.6s cubic-bezier(.2,.7,.2,1) forwards 1.6s;
+  }
+  .rule{
+    width:32px;height:1px;background:var(--teal-soft);margin:clamp(1.8rem,3.4vw,2.4rem) 0 1.2rem;
+    opacity:0;transform-origin:center;animation:grow 1.8s ease forwards 2.2s;
+  }
+  @keyframes grow{from{opacity:0;transform:scaleX(0)}to{opacity:.5;transform:scaleX(1)}}
+  .purpose{
+    font-weight:300;font-size:.62rem;letter-spacing:.5em;text-indent:.5em;
+    text-transform:uppercase;color:var(--teal-soft);
+    opacity:0;animation:fade 2.4s ease forwards 2.4s;
+  }
+
+  @keyframes rise{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes fade{to{opacity:1}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms!important}
+    .mark,.name,.statement,.purpose,.corner{opacity:1!important;transform:none!important}
+    .rule{opacity:.5!important;transform:scaleX(1)!important}
+  }
+  @media (max-width:560px){
+    .c-bl,.c-br{display:none}
+  }
 </style>
 </head>
 <body>
-  <h1>Archean — Templates</h1>
-  <a href="manifesto.html">Manifesto</a>
-  <a href="specimen.html">Specimen</a>
+  <span class="corner c-tl">Archean</span>
+  <span class="corner c-tr"><a href="mailto:hello@the-archean.com">Contact</a></span>
+  <span class="corner c-bl">Est. MMXXV</span>
+  <span class="corner c-br">San Francisco, CA</span>
+
+  <main class="stage">
+    <img class="mark" src="assets/archean-mark.png" alt="Archean">
+    <div class="name">ARCHEAN</div>
+    <p class="statement">We are an AI lab investing in our future.</p>
+    <div class="rule"></div>
+    <p class="purpose">Predicting the future</p>
+  </main>
 </body>
 </html>

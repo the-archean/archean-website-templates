@@ -20,7 +20,7 @@ Open `index.html` for a launcher linking to both.
 - Purpose line: *Predicting the future*
 - Location: *San Francisco, CA*
 
-The Contact link points to `hello@archean.ai` — update to the real address.
+The Contact link points to `hello@the-archean.com`.
 
 ## Brand
 

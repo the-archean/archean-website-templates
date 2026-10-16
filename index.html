@@ -17,7 +17,7 @@
     --ink:#33403c;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%;width:100%;overflow:hidden}
+  html,body{min-height:100%;width:100%;overflow-x:hidden}
   body{
     background:var(--bone);
     color:var(--teal);
@@ -60,8 +60,8 @@
   }
   .statement{
     font-family:"Cormorant",Georgia,serif;font-weight:300;
-    font-size:clamp(1.5rem,3.6vw,2.2rem);line-height:1.4;color:var(--ink);
-    max-width:20ch;
+    font-size:clamp(1.3rem,2.2vw,1.9rem);line-height:1.45;color:var(--ink);
+    max-width:40em;text-wrap:balance;
     opacity:0;animation:rise 2.6s cubic-bezier(.2,.7,.2,1) forwards 1.6s;
   }
   .rule{
@@ -85,6 +85,8 @@
   }
   @media (max-width:560px){
     .c-bl,.c-br{display:none}
+    .stage{padding:5.5rem 1.5rem 4rem}
+    .statement{font-size:1.3rem;line-height:1.5;max-width:22em}
   }
 </style>
 </head>
